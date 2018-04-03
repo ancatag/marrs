@@ -26,7 +26,8 @@
 <span id="timer"></span>
 <div class="container">
 <header>
-  <h2>Identify Practice Exam</h2>
+  <h2>Identify The Correct Spelling</h2>
+  --Online Practice / Identify The Correct Spelling
   <div style="float: right;">Time Left: <span id="timespan"></span> seconds</div>
 </header>
 <form id="identPractQuespap">
