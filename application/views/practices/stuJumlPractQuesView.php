@@ -26,7 +26,8 @@
 <span id="timer"></span>
 <div class="container">
 <header>
-  <h2>Jumbled Practice Exam</h2>
+  <h2>Jumbled Letters</h2>
+  --Online Practice / Jumbled Letters
   <div style="float: right;">Time Left: <span id="timespan"></span> seconds</div>
   <!-- <div id="timespan" style="float: right;">
   Time Left:

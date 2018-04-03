@@ -198,11 +198,10 @@ function openReportCard(){
                     // for(i = 0; i<rsp.data.length; i++){
                     //     $(".jumblQuesRes").append("<div class='media text-muted pt-3 newsfeeds-div'> <p class='media-body pb-3 mb-0 small lh-225 border-bottom border-gray'> <strong class='d-block text-gray-dark'>"+(i+1)+'.'+rsp.data[i].jum_id+"</p></div>");
                     // }	
-                
                     //window.location.href = path+'stu/index';  
-                }else if(rsp.status === false){
+                }else if(rsp.status == true){
                     if (confirm("You have no answered anything, do you want to redirect it to the home page?")) {
-                        window.location.href = path+'stu';
+                        window.location.href = path+'stu'; 
                     }
                 }    
             },

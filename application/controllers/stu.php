@@ -172,12 +172,12 @@ class Stu extends CI_Controller {
             $rsp['msg'] =  "No Data Fetched";
             $rsp['statusID'] = 0;
             $rsp['data'] = NULL;
-		$jumblListArray = $this->data->getAllNewsDb();
-        if ($jumblListArray){
+		$newsListArray = $this->data->getAllNewsDb();
+        if ($newsListArray){
 			$rsp['status'] = TRUE;
             $rsp['msg'] =  "Data Fetched";
             $rsp['statusID'] = 1;
-            $rsp['data'] = $jumblListArray;
+            $rsp['data'] = $newsListArray;
 		}
 		echo json_encode ($rsp);
     } 

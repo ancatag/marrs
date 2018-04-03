@@ -223,8 +223,9 @@ function GetNewsfeeds() {
         complete: function(XMLHttpRequest, textStatus) {
         },
         success: function(rsp, textStatus){
-            // console.log(rsp);
+            console.log(rsp);
             for(i = 0; i<rsp.data.length; i++){
+                console.log(rsp.data[i].stuNewsTitle);
                 $(".newsfeeds").append('<div class="media text-muted pt-3 newsfeeds-div"> <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray"> <strong class="d-block text-gray-dark">'+rsp.data[i].stuNewsTitle+'</strong>'+rsp.data[i].stuNewsContent+'</p></div>');
             }	
             // window.location.href = path+'stu/index';
@@ -253,6 +254,10 @@ function getOnlineExamDetailsWithId(ext_id) {
                 <p>"+rsp.data.ext_description+"</p>\
             ");
             $('#practiceQuesTypesModal #formContents').html("\
+            <div class='alert alert-warning' role='alert'>\
+            <h5>WARNING !!!!!!</h5>\
+            The Question will be shown as per the timing given below,after which it moves automatically. The timing can be adjusted by changing it below.\
+            </div>\
             <input type='hidden' name='ext_id' value='"+rsp.data.ext_id+"'>\
             <div class='form-group'>\
             <label for='timeLimit'>Time Need For Each Question (Seconds) :</label>\
