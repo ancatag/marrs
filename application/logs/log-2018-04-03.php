@@ -15414,3 +15414,51 @@ DEBUG - 2018-04-03 09:51:05 --> Final output sent to browser
 DEBUG - 2018-04-03 09:51:05 --> Final output sent to browser
 DEBUG - 2018-04-03 09:51:05 --> Total execution time: 0.1024
 DEBUG - 2018-04-03 09:51:05 --> Total execution time: 0.1024
+DEBUG - 2018-04-03 10:01:05 --> Config Class Initialized
+DEBUG - 2018-04-03 10:01:05 --> Config Class Initialized
+DEBUG - 2018-04-03 10:01:05 --> Hooks Class Initialized
+DEBUG - 2018-04-03 10:01:05 --> Hooks Class Initialized
+DEBUG - 2018-04-03 10:01:05 --> Utf8 Class Initialized
+DEBUG - 2018-04-03 10:01:05 --> Utf8 Class Initialized
+DEBUG - 2018-04-03 10:01:05 --> UTF-8 Support Enabled
+DEBUG - 2018-04-03 10:01:05 --> UTF-8 Support Enabled
+DEBUG - 2018-04-03 10:01:05 --> URI Class Initialized
+DEBUG - 2018-04-03 10:01:05 --> URI Class Initialized
+DEBUG - 2018-04-03 10:01:05 --> Router Class Initialized
+DEBUG - 2018-04-03 10:01:05 --> Router Class Initialized
+DEBUG - 2018-04-03 10:01:05 --> Output Class Initialized
+DEBUG - 2018-04-03 10:01:05 --> Output Class Initialized
+DEBUG - 2018-04-03 10:01:05 --> Security Class Initialized
+DEBUG - 2018-04-03 10:01:05 --> Security Class Initialized
+DEBUG - 2018-04-03 10:01:05 --> Input Class Initialized
+DEBUG - 2018-04-03 10:01:05 --> Input Class Initialized
+DEBUG - 2018-04-03 10:01:05 --> Global POST and COOKIE data sanitized
+DEBUG - 2018-04-03 10:01:05 --> Global POST and COOKIE data sanitized
+DEBUG - 2018-04-03 10:01:05 --> Language Class Initialized
+DEBUG - 2018-04-03 10:01:05 --> Language Class Initialized
+DEBUG - 2018-04-03 10:01:05 --> Loader Class Initialized
+DEBUG - 2018-04-03 10:01:05 --> Loader Class Initialized
+DEBUG - 2018-04-03 10:01:05 --> Helper loaded: url_helper
+DEBUG - 2018-04-03 10:01:05 --> Helper loaded: url_helper
+DEBUG - 2018-04-03 10:01:05 --> Database Driver Class Initialized
+DEBUG - 2018-04-03 10:01:05 --> Database Driver Class Initialized
+DEBUG - 2018-04-03 10:01:05 --> Session Class Initialized
+DEBUG - 2018-04-03 10:01:05 --> Session Class Initialized
+DEBUG - 2018-04-03 10:01:05 --> Helper loaded: string_helper
+DEBUG - 2018-04-03 10:01:05 --> Helper loaded: string_helper
+DEBUG - 2018-04-03 10:01:05 --> Session routines successfully run
+DEBUG - 2018-04-03 10:01:05 --> Session routines successfully run
+DEBUG - 2018-04-03 10:01:05 --> Encrypt Class Initialized
+DEBUG - 2018-04-03 10:01:05 --> Encrypt Class Initialized
+DEBUG - 2018-04-03 10:01:05 --> Model Class Initialized
+DEBUG - 2018-04-03 10:01:05 --> Model Class Initialized
+DEBUG - 2018-04-03 10:01:05 --> Model Class Initialized
+DEBUG - 2018-04-03 10:01:05 --> Model Class Initialized
+DEBUG - 2018-04-03 10:01:05 --> Model Class Initialized
+DEBUG - 2018-04-03 10:01:05 --> Model Class Initialized
+DEBUG - 2018-04-03 10:01:05 --> Controller Class Initialized
+DEBUG - 2018-04-03 10:01:05 --> Controller Class Initialized
+DEBUG - 2018-04-03 10:01:05 --> Final output sent to browser
+DEBUG - 2018-04-03 10:01:05 --> Final output sent to browser
+DEBUG - 2018-04-03 10:01:05 --> Total execution time: 0.0431
+DEBUG - 2018-04-03 10:01:05 --> Total execution time: 0.0431
