@@ -1,0 +1,33 @@
+  main{
+    min-height: 80vh;
+  }
+  #navbardrop{
+      font-size: 1.3em;
+  }
+  nav{
+      background-color: #0A3E6E;
+  }
+  .badge-pill {
+    padding-right: .6em;
+    padding-left: .6em;
+    border-radius: 10rem;
+    color: #cdda18;
+  }
+  .footer {
+    clear: both;
+    position: relative;
+    z-index: 10;
+    height: auto;
+    margin-top: -3em;
+    color: #fff;
+    background: #0a3e6d;
+  }
+  .newsfeeds{
+    max-height: 80%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+  
+  
+
+
