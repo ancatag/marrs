@@ -30,7 +30,7 @@ function GetPracticeQuesType() {
         complete: function(XMLHttpRequest, textStatus) {
         },
         success: function(rsp, textStatus){
-            // console.log(rsp);
+            console.log(rsp);
             // console.log(rsp.data[0].ext_id);
             //for(i = 0; i<rsp.data.length; i++){
                 //$(".questypes").append('<div class="container"> <div class="row"><div class="col-md-4"><br><a href="'+path+'stu/jumblGet/'+rsp.data[0].ext_id+'" id="jum" class="btn btn-secondary btn-lg btn-block"  role="button" aria-pressed="true"><h6><br>JUMBLED </h6></a> </div> </div><div class="col-md-4"><br> <a href="#" id="style"class="btn btn-secondary btn-lg btn-block"  role="button" aria-pressed="true"><br><h6>DICTATION/<br>SPELL IT </h6></a> </div><div class="col-md-4"><br><a href="#" id="style" class="btn btn-secondary btn-lg btn-block"  role="button" aria-pressed="true"><br><h6>IDENTIFY CORRECT<br> SPELLING</h6></a></div></div></div>');

@@ -32,6 +32,7 @@ for (var i=0; i<questsPractDict.length; i++){
     //$("#audioQues").attr('src',path+"assets/mp3/"+questsPractDict[i].dictation_questions+".mp3")
 }  
 $('.questsIndDiv0').css("display", "block");
+
 $('#dictPractQuespap').append("\
     <div class='row'>\
         <div class='col-sm-10'>\
@@ -66,6 +67,8 @@ $('#dictPractQuespap').append("\
                 $('#nxtBtn').hide();
                 cdpause();
                 clearInterval(timer);
+                $("#practiceDictResult_Btn").trigger('click');
+               
             }else{
                 $('.questsIndDiv:visible:last').prev().hide();
             }
@@ -75,7 +78,6 @@ $('#dictPractQuespap').append("\
             //     $('.questsIndDiv:visible:last').prev().hide();
             // }
         }
-       
 
 // for (var i=0; i<questsPractDict.length; i++){
 //     $('#identPractQuespap').append("\

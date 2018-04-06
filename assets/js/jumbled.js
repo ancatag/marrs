@@ -192,15 +192,23 @@ function displayNext(){
            // $('.questsIndDiv:visible:last').prev().hide();
     //}
         //$('.questsIndDiv:visible:last').prev().hide();
-
+        // var displayedDiv = $('div.questsIndDiv').filter(':visible');
+        // console.log(displayedDiv);
+        // check = $('.questsIndDiv:visible:last input').attr('name');
+        var lastDiv = $('.questsIndDiv input:last');
+        //console.log(lastDiv);
         if($('.questsIndDiv input:last').val() != ''){
             $('#practiceJumbResult_Btn').show();
             $('#nxtBtn').hide();
             cdpause();
             clearInterval(timer);
-            // quitAndSubmit();
-        }else{
+            // $('#practiceJumbResult_Btn').show();
+            //$("#practiceJumbResult_Btn").trigger('click');
+          
+        }
+        else{
             $('.questsIndDiv:visible:last').prev().hide();
+            
         }
         
        // setTimeout(displayNext, questsPractJumb.timeLimit);

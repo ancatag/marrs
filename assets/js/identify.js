@@ -32,12 +32,16 @@ $('#identPractQuespap').append("\
         <div class='col-sm-10'>\
         <a id='quitBtn' class='btn btn-danger quitAndSubmitBtn' onclick='quitAndSubmit(event)'>Quit Exam</a>\
         <a class='btn btn-info' id='nxtBtn' onclick='displayNext()'>Next</a>\
-        <button id='practiceDictResult_Btn' type='submit' class='btn btn-primary quitAndSubmitBtn' onclick='quitAndSubmit(event)' style='display:none'>Submit Answer</button>\
+        <button id='practiceDictResult_Btn' type='submit' class='btn btn-primary quitAndSubmitBtn second' onclick='quitAndSubmit(event)' style='display:none'>Submit Answer</button>\
         <a id='detailReport_Btn' class='btn btn-warning' onclick='openReportCard();' style='display:none'>Detail Report</a>\
         </div>\
     </div>\
       "); 
      
+  
+
+        
+
       function timeOut() {
         cdreset(questsPractIdent.timeLimit);//timer reset
         countdown();//timer start 
@@ -49,7 +53,7 @@ $('#identPractQuespap').append("\
              clearInterval(timer);
              cdreset(questsPractIdent.timeLimit);//timer reset
              countdown();//timer start 
-            
+            flag =0;
     timer = setInterval(timeOut, secondToMilli(questsPractIdent.timeLimit));
     // if($('.questsIndDiv:visible:last input').val() != '' && $('.questsIndDiv:visible:last input').val() != '------'){
         
@@ -81,10 +85,10 @@ $('#identPractQuespap').append("\
     //     $('.questsIndDiv:visible:last input').val('------');
     //     //$('.questsIndDiv:visible:last input').val('');
     //  }  
-    // $('#quitBtn').click(function(){
-    
+   
       $('.questsIndDiv:visible:last').next().css("display", "block");
         $('.questsIndDiv:visible:last').prev().hide();
+       
 
 
     //});
@@ -104,7 +108,7 @@ $('#identPractQuespap').append("\
     //console.log( $('.questsIndDiv:visible:last').parent('.toCheck').siblings('.col').prev().hide());
  // console.log(lastDiv);
 //  cdpause();
-
+ 
 
 
 var lastDiv = $('.questsIndDiv:last');
@@ -116,6 +120,7 @@ if(lastDiv.is(':visible')){
     
          
 //clearInterval(timer);
+
         
           
            
@@ -166,60 +171,86 @@ if(lastDiv.is(':visible')){
             //     $('.questsIndDiv:visible input').attr('checked','checked').val('------');
             // }
            
-            
+            ////////// jshjkahjh//////////////////////////////
            
-       
+            
                 Lstime = secondToMilli(questsPractIdent.timeLimit);
-                var timeoutHandle = window.setTimeout(function() {
+                clearTimeout(timeoutHandle);
+                var timeoutHandle = setTimeout(function() {
                     var selName = $('.questsIndDiv:visible input').attr('name');
                     var selectorName= "input[name='"+selName+"']:checked";
-                    
                     if (!$(selectorName).val()) {
                         //  alert();
                         $('.questsIndDiv:visible input').attr('checked','checked').val('------');
                     }
+                    clearTimeout(timeoutHandle);
+                    
                     $("#practiceDictResult_Btn").trigger('click');
+                    // cdpause();
+                    $('#practiceDictResult_Btn').hide();
                     console.log(Lstime);
                     
                   },Lstime);
-                 
+                                      
                  $("#practiceDictResult_Btn").click(function(){ 
-                    
-                      window.clearTimeout(timeoutHandle);
+                   clearTimeout(timeoutHandle);
+                      var selName = $('.questsIndDiv:visible input').attr('name');
+                      var selectorName= "input[name='"+selName+"']:checked";
+                      
+                      if (!$(selectorName).val()) {
+                        //    alert();
+                          $('.questsIndDiv:visible input').attr('checked','checked').val('------');
+                          $("#practiceDictResult_Btn").trigger('click');
+                          $('#practiceDictResult_Btn').hide();
+                         
+                        //   $('#dashboard-view #timeShow #timespan').hide();
+                      } 
+                     
+                      cdpause();
                  });
-                //  var selName = $('.questsIndDiv:visible input').attr('name');
-                //  var selectorName= "input[name='"+selName+"']:checked";
-                 
-                //  if (!$(selectorName).val()) {
-                //      //  alert();
-                //      $('.questsIndDiv:visible input').attr('checked','checked').val('------');
-                //  }
-                //   window.clearTimeout();
-                  
-                 
-                //   cache_clear();
-                  
-                 
-            // }
-                //run function2
-             
-        
-        
-           
-        
+
+              
+               //window.clearTimeout(timeoutHandle);
+               
+
+
+                 clearInterval(timer);
+                 ////////////////////////////////////////////////
+
         //   clearTimeout(tt);
           //cdpause();
-            
-          clearInterval(timer);
-        
-      //setTimeout(quitAndSubmit,3000);
-         
-      
-
+          
     }
+    //clearTimeout(timeoutHandle);
+    ////////////////////////////////////quitBtn session////////////////////////////////////////////////////                 
+    $("#quitBtn").click(function(){ 
+       
+        var selName = $('.questsIndDiv:visible input').attr('name');
+        var selectorName= "input[name='"+selName+"']:checked";
+               
+               if (!$(selectorName).val()) {
+                 //    alert();
+                   $('.questsIndDiv:visible input').attr('checked','checked').val('------');
+                
+                  $("#quitBtn").trigger('click');
+                    //window.clearTimeout(timeoutHandle);
+                    $('#nxtBtn').hide();
+                    
+               } 
+               clearInterval(timer);    
+               cdpause();
+            //    var displayedDiv = $('div.questsIndDiv').filter(':visible');
+            //    console.log(displayedDiv);
+                // var last_visible_element = $('div.questsIndDiv:visible:last');
+                // console.log(last_visible_element);
+                // if(last_visible_element){
+                //     console.log($('.questsIndDiv0').css("display", "block").show());
+                
+                // }
+            
+            
 
-        
-         
+});    
     
         //  setTimeout(function() {
         //     alert("Hello");
@@ -307,6 +338,8 @@ function openReportCard(){
                     <tr><td>Final Result:</td></tr>\
                     </table>\
                         ");
+                        $("#detailReportModal_Body table").next().show();
+                        $("#detailReportModal_Body table").prev().hide();
                             i++;
                             
                         }else if(rsp.data.resultData[key] == '------'){
@@ -330,6 +363,8 @@ function openReportCard(){
                     <tr><td>Final Result:</td></tr>\
                     </table>\
                 ");
+                $("#detailReportModal_Body table").next().show();
+                $("#detailReportModal_Body table").prev().hide();
                     i++;
                         }else{
                             wr++;
@@ -345,6 +380,8 @@ function openReportCard(){
                     <tr><td>Final Result:</td></tr>\
                     </table>\
                 ");
+                $("#detailReportModal_Body table").next().show();
+                $("#detailReportModal_Body table").prev().hide();
                             i++;
                             
                         }

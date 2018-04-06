@@ -28,7 +28,7 @@
 <header>
   <h2>Identify The Correct Spelling</h2>
   --Online Practice / Identify The Correct Spelling
-  <div style="float: right;">Time Left: <span id="timespan"></span> seconds </div>
+  <div id='timeShow' style="float: right;">Time Left: <span id="timespan"></span> seconds </div>
 </header>
 <form id="identPractQuespap">
 <!-- <header>
@@ -45,10 +45,7 @@ foreach($quests as $row)
 <strong class='d-block text-gray-dark'></strong></p>
 <input type='text' style='width:120px;' class='form-control ansInput' placeholder='text answer'><span></span>
 </div> -->
-<?php
-// $i++;
-// }
-?>
+
 </form>
 </div>
 <!-- Modal -->
