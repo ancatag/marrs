@@ -147,6 +147,7 @@ for (var i=0; i<questsPractJumb.length; i++){
             </div>\
         </div>\
     ");
+    
 }  
 $('.questsIndDiv0').css("display", "block");
 $('#jumPractQuespap').append("\
@@ -159,7 +160,7 @@ $('#jumPractQuespap').append("\
         </div>\
     </div>\
       "); 
-
+     // for (var i=0; i<questsPractJumb.length; i++){
 function timeOut() {
     cdreset(questsPractJumb.timeLimit);//timer reset
     countdown();//timer start 
@@ -174,6 +175,11 @@ function displayNext(){
     cdreset(questsPractJumb.timeLimit);//timer reset
     countdown();//timer start
     timer = setInterval(timeOut, secondToMilli(questsPractJumb.timeLimit));
+
+
+    ///////////new////////////////////////////////
+
+    //////////////////////////////////////////////////
         // timer = 5000;
         // clearTimeout(); //cancel the previous timer.
         // timer = null;
@@ -184,32 +190,103 @@ function displayNext(){
        // $('.questsIndDiv:visible:last').next().css("display", "block");
         
             $('.questsIndDiv:visible:last').next().css("display","block");
-        
+            $('.questsIndDiv:visible:last').prev().hide();
 
        // $('.questsIndDiv:visible:last').next().css("display", "block");
         // if($('.questsIndDiv:visible').last().is(':last-child') == '')
         // {
            // $('.questsIndDiv:visible:last').prev().hide();
     //}
-        //$('.questsIndDiv:visible:last').prev().hide();
+    // var next =$('.questsIndDiv:visible:last input').attr('id');
+    // console.log(next);
+        //$('.questsIndDiv:visible:last').prev().hide();onsole.log(lastDiv);
         // var displayedDiv = $('div.questsIndDiv').filter(':visible');
         // console.log(displayedDiv);
         // check = $('.questsIndDiv:visible:last input').attr('name');
-        var lastDiv = $('.questsIndDiv input:last');
-        //console.log(lastDiv);
-        if($('.questsIndDiv input:last').val() != ''){
+       // var ln = questsPractJumb.length;
+    //    var largestID = $(".questsIndDiv:last input:first").attr("name")
+    
+    var lastID =  $('.questsIndDiv:visible:last input').attr('id');
+        // console.log($('.questsIndDiv:nth-last-child(2)'));
+        var id = questsPractJumb[(questsPractJumb.length-1)].jum_id;
+        // console.log(lastID);
+        // console.log(id);
+        if(lastID == id){
+          
+            // Lstime = secondToMilli(questsPractJumb.timeLimit);
+            // var timeoutHandle = setTimeout(function() {
             $('#practiceJumbResult_Btn').show();
             $('#nxtBtn').hide();
-            cdpause();
+            
             clearInterval(timer);
-            // $('#practiceJumbResult_Btn').show();
-            //$("#practiceJumbResult_Btn").trigger('click');
+            Lstime = secondToMilli(questsPractJumb.timeLimit);
+            var timeoutHandle = setTimeout(function() {
+                if($('.questsIndDiv:visible:last input').val() == ''){
+                    $('.questsIndDiv:visible:last input').val('------');
+                }
+                clearTimeout(timeoutHandle);
+                $("#practiceJumbResult_Btn").trigger('click');
+                $('#practiceJumbResult_Btn').hide();
+                //console.log(Lstime);
+            },Lstime);
+
+            $("#practiceJumbResult_Btn").click(function(){ 
+               clearTimeout(timeoutHandle);
+                // var timeoutHandle = setTimeout(function() {
+                if($('.questsIndDiv:last input').val() == ''){
+
+                    $('.questsIndDiv:last input').val('------');
+                    
+                    // console.log($('.questsIndDiv span'));
+                    // $(ht).siblings('span').append("<i class='fa fa-ban'></i>").prev().hide();
+                    $("#practiceJumbResult_Btn").trigger('click');
+                    $('#practiceJumbResult_Btn').hide();
+                    cdpause();
+                    
+                    
+                }        
+            // },Lstime);  
+
+              });
           
         }
-        else{
-            $('.questsIndDiv:visible:last').prev().hide();
+        $("#quitBtn").click(function(){ 
+            clearInterval(timer);
+ 
+            if($('.questsIndDiv:visible:last input').val() == ''){
+
+                $('.questsIndDiv:visible:last input').val('------');
+                $("#quitBtn").trigger('click');
+                $('#nxtBtn').hide();
+                cdpause();
+                // console.log(lastID);
+                // console.log($('.questsIndDiv:visible:last'));
+                console.log($('.questsIndDiv:visible:last'));
+                // $('div.questsIndDiv:visible:last').next().hide();
+            }
+        
+        // clearInterval(timer);
+        
+    });    
+        // Lstime = secondToMilli(questsPractJumb.timeLimit);
+        //     clearTimeout(timeoutHandle);
+        //     var timeoutHandle = setTimeout(function() {
+             
+                
+        //         clearTimeout(timeoutHandle);
+        //         $('#practiceJumbResult_Btn').show();
+        //         $('#nxtBtn').hide();
+               
+        //         clearInterval(timer);
+        //         // $('#practiceJumbResult_Btn').show();
+        //         $("#practiceJumbResult_Btn").trigger('click');
+                
+        //       },Lstime);
+      
+        // else{
+        //     $('.questsIndDiv:visible:last').prev().hide();
             
-        }
+        // }
         
        // setTimeout(displayNext, questsPractJumb.timeLimit);
         // if($('.questsIndDiv:visible:last').children(':hidden').length > 0) {
@@ -228,7 +305,7 @@ function displayNext(){
 //       // window.location.href = path+'stu/whichPractQues';
  //  });
 //});
-
+    //   }
 
 function openReportCard(){
     //alert();
@@ -267,7 +344,8 @@ function openReportCard(){
                         //alert('Correct');
                             var ht = "#"+key;
                             $(ht).siblings('span').html("<i class='fa fa-check'></i>");
-                        
+                            $(ht).siblings('span').html("<i class='fa fa-check'></i>").prev().hide();
+                            //$('.questsIndDiv span').prev().hide();
                             $("#detailReportModal_Body table").append("\<table>\
                     <tr><td>Total No.Of.Questions:</td><td>"+(sum+wr+sk)+"</td></tr>\
                     <tr><td>No.Of.Correct Answer:</td><td>"+sum+"</td></tr>\
@@ -329,7 +407,8 @@ function openReportCard(){
                     if (confirm("You have no answered anything, do you want to redirect it to the home page?")) {
                         window.location.href = path+'stu';
                     }
-                }    
+                } 
+
             },
             error: function(XMLHttpRequest, err) {
             alert('Something went wrong');

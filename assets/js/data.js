@@ -223,9 +223,9 @@ function GetNewsfeeds() {
         complete: function(XMLHttpRequest, textStatus) {
         },
         success: function(rsp, textStatus){
-            console.log(rsp);
+            //console.log(rsp);
             for(i = 0; i<rsp.data.length; i++){
-                console.log(rsp.data[i].stuNewsTitle);
+              //  console.log(rsp.data[i].stuNewsTitle);
                 $(".newsfeeds").append('<div class="media text-muted pt-3 newsfeeds-div"> <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray"> <strong class="d-block text-gray-dark">'+rsp.data[i].stuNewsTitle+'</strong>'+rsp.data[i].stuNewsContent+'</p></div>');
             }	
             // window.location.href = path+'stu/index';

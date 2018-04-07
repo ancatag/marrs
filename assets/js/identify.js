@@ -18,7 +18,7 @@ for (var i=0; i<questsPractIdent.length; i++){
                     <input type='radio' name='"+questsPractIdent[i].idn_id+"' value='"+questsPractIdent[i].option3+"' id='"+questsPractIdent[i].idn_id+"' class='ansInput' /><label for='1'>"+questsPractIdent[i].option3+"</label>\
                     </div>\
                     <div class='w-100'></div>\
-                    <div class='col' id='skipped'>\
+                    <div class='col' id='skipped' style='visibility:hidden'>\
                     <input type='radio' name='"+questsPractIdent[i].idn_id+"'>\
                     </div>\
                     <div class='w-100'></div>\
@@ -352,9 +352,10 @@ function openReportCard(){
                             sk++;
                             var ht = "#"+key;
                             // $(ht).siblings('.toCheck').find('span').html("<i class='fa fa-check'></i>");
+                            $(ht).siblings('span').append("<i class='fa fa-ban'></i>").prev().hide();
                             $(ht).parent().siblings('span').html("<i class='fa fa-ban'></i>");
                            // console.log($(ht).parent());
-                            // $(ht).siblings('span').append("<i class='fa fa-ban'></i>");
+                            $(ht).siblings('span').append("<i class='fa fa-ban'></i>").prev().hide();
                             $("#detailReportModal_Body table").html("\<table>\
                     <tr><td>Total No.Of.Questions:</td><td>"+(sum+wr+sk)+"</td></tr>\
                     <tr><td>No.Of.Correct Answer:</td><td>"+sum+"</td></tr>\
