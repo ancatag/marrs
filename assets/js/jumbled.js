@@ -135,7 +135,7 @@ for (var i=0; i<questsPractJumb.length; i++){
                     <p class='media-body pb-3 mb-0 lh-225'> \
                     <strong class='d-block text-gray-dark jumques'>" +(i+1)+ ")" +questsPractJumb[i].jumbled_questions+"</strong></p>\
                 </div>\
-                <div class='col-sm-4'>\
+                <div class='col-sm-3'>\
                     <input type='text' name='"+questsPractJumb[i].jum_id+"' id='"+questsPractJumb[i].jum_id+"'  class='form-control ansInput' placeholder='text answer'>\
                 <span></span>\
                 </div>\
@@ -232,6 +232,7 @@ function displayNext(){
 
             $("#practiceJumbResult_Btn").click(function(){ 
                clearTimeout(timeoutHandle);
+            //    event.stopPropagation();
                 // var timeoutHandle = setTimeout(function() {
                 if($('.questsIndDiv:last input').val() == ''){
 
@@ -344,8 +345,8 @@ function openReportCard(){
                         //alert('Correct');
                             var ht = "#"+key;
                             $(ht).siblings('span').html("<i class='fa fa-check'></i>");
-                            $(ht).siblings('span').html("<i class='fa fa-check'></i>").prev().hide();
-                            //$('.questsIndDiv span').prev().hide();
+                            console.log($('.questsIndDiv').siblings('span')); 
+                            // $('.questsIndDiv').prev().hide();
                             $("#detailReportModal_Body table").append("\<table>\
                     <tr><td>Total No.Of.Questions:</td><td>"+(sum+wr+sk)+"</td></tr>\
                     <tr><td>No.Of.Correct Answer:</td><td>"+sum+"</td></tr>\
@@ -366,6 +367,7 @@ function openReportCard(){
                     <tr><td>No.Of.Skipped Questions:</td><td>"+sk+"</td></tr>\
                     <tr><td>Final Result:</td></tr>\
                 ");
+              
                     i++;
                         }else{
                             wr++;

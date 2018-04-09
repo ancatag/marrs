@@ -327,7 +327,10 @@ function openReportCard(){
                         //alert('Correct');
                             var ht = "#"+key;
                         //    $(ht).siblings('.toCheck').find('span').html("<i class='fa fa-check'></i>");
+                       // $(ht).parent().siblings('span').html("<i class='fa fa-check' ></i>").prev().hide();
                            $(ht).parent().siblings('span').html("<i class='fa fa-check' ></i>");
+                           
+                           
                           
                           
                             $("#detailReportModal_Body table").append("\<table>\
