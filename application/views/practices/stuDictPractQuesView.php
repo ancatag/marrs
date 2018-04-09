@@ -26,7 +26,8 @@
 <span id="timer"></span>
 <div class="container">
 <header>
-  <h2>Dictation Practice Exam</h2>
+  <h2>Dictation / Spell It</h2>
+  --Online Practice / Dictation
   <div style="float: right;">Time Left: <span id="timespan"></span> seconds</div>
   <!-- <div id="timespan" style="float: right;">
   Time Left:

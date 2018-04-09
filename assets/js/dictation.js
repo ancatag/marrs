@@ -19,12 +19,12 @@ for (var i=0; i<questsPractDict.length; i++){
                 <div class='w-100'></div>\
                 <div class='col'>\
                 <input type='text' name='"+questsPractDict[i].dic_id+"' id='"+questsPractDict[i].dic_id+"' class='form-control ansInput' placeholder='text answer'/>\
+                <span></span>\
                 </div>\
                 <div class='w-100'></div>\
                 <div class='col'>\
                 <p>hint: <small>"+questsPractDict[i].dic_hints+"</small></p>\
                 </div>\
-                <span></span>\
                 </div>\
             </div>\
     ");
@@ -32,6 +32,7 @@ for (var i=0; i<questsPractDict.length; i++){
     //$("#audioQues").attr('src',path+"assets/mp3/"+questsPractDict[i].dictation_questions+".mp3")
 }  
 $('.questsIndDiv0').css("display", "block");
+
 $('#dictPractQuespap').append("\
     <div class='row'>\
         <div class='col-sm-10'>\
@@ -59,23 +60,76 @@ $('#dictPractQuespap').append("\
         $('.questsIndDiv:visible:last input').val('------');
     }
              $('.questsIndDiv:visible:last').next().css("display", "block");
+             $('.questsIndDiv:visible:last').prev().hide();
             
             //  $('.questsIndDiv:visible:last').prev().show();
-             if($('.questsIndDiv input:last').val() != ''){
+            var lastID =  $('.questsIndDiv:visible:last input').attr('id');
+        // console.log($('.questsIndDiv:nth-last-child(2)'));
+        var id = questsPractDict[(questsPractDict.length-1)].dic_id;
+             if(lastID == id){
                 $('#practiceDictResult_Btn').show();
                 $('#nxtBtn').hide();
-                cdpause();
+                // cdpause();
                 clearInterval(timer);
-            }else{
-                $('.questsIndDiv:visible:last').prev().hide();
+                //$("#practiceDictResult_Btn").trigger('click');
+                Lstime = secondToMilli(questsPractDict.timeLimit);
+            var timeoutHandle = setTimeout(function() {
+                if($('.questsIndDiv:visible:last input').val() == ''){
+                    $('.questsIndDiv:visible:last input').val('------');
+                }
+                clearTimeout(timeoutHandle);
+                $("#practiceDictResult_Btn").trigger('click');
+                $('#practiceDictResult_Btn').hide();
+                console.log(Lstime);
+            },Lstime);
+
+
+            $("#practiceDictResult_Btn").click(function(){ 
+                clearTimeout(timeoutHandle);
+                 // var timeoutHandle = setTimeout(function() {
+                 if($('.questsIndDiv:last input').val() == ''){
+                     // alert();
+                     
+                     $('.questsIndDiv:last input').val('------');
+                     
+                     // console.log($('.questsIndDiv span'));
+                     // $(ht).siblings('span').append("<i class='fa fa-ban'></i>").prev().hide();
+                     $("#practiceDictResult_Btn").trigger('click');
+                     $('#practiceDictResult_Btn').hide();
+                    
+                     cdpause();
+                 }        
+             // },Lstime);  
+ 
+               });
             }
+            // else{
+            //     $('.questsIndDiv:visible:last').prev().hide();
+            // }
             // if($('.questsIndDiv:visible:last input').val() == ''){
             //     $('.questsIndDiv:visible:last input').val('------');
             //     $('.questsIndDiv:visible:last').next().css("display", "block");
             //     $('.questsIndDiv:visible:last').prev().hide();
             // }
+            $("#quitBtn").click(function(){ 
+                clearInterval(timer);
+               
+                if($('.questsIndDiv:visible:last input').val() == ''){
+    
+                    $('.questsIndDiv:visible:last input').val('------');
+                    $("#quitBtn").trigger('click');
+                    // $('#quitBtn').hide();
+                    $('#nxtBtn').hide();
+                    cdpause();
+                    clearInterval(timer);
+                   
+                    $('.questsIndDiv:visible:last').css("display", "block").show();
+                    $('.questsIndDiv:visible:last').next().hide();
+                }
+            // clearInterval(timer);
+            
+        });    
         }
-       
 
 // for (var i=0; i<questsPractDict.length; i++){
 //     $('#identPractQuespap').append("\
@@ -109,7 +163,7 @@ function openReportCard(){
         data = $( "#dictPractQuespap input").filter(function () {
             return !!this.value; 
         }).serializeAssoc();
-        console.log(data);
+       // console.log(data);
         $.ajax({
             url: url,
             type: "POST",
@@ -126,8 +180,8 @@ function openReportCard(){
                     $(".ansInput").attr("disabled", true);
                     var i = 0;    var sum =0; var wr =0;  var sk =0;
                     for (var key in rsp.data.resultData) {
-                        console.log(rsp.data.resultData.length);
-                        console.log(rsp);
+                        //console.log(rsp.data.resultData.length);
+                        //console.log(rsp);
 
                         if(rsp.data.resultData[key] == 'TRUE'){
                             sum++;

@@ -18,8 +18,8 @@ for (var i=0; i<questsPractIdent.length; i++){
                     <input type='radio' name='"+questsPractIdent[i].idn_id+"' value='"+questsPractIdent[i].option3+"' id='"+questsPractIdent[i].idn_id+"' class='ansInput' /><label for='1'>"+questsPractIdent[i].option3+"</label>\
                     </div>\
                     <div class='w-100'></div>\
-                    <div class='col' id='skipped' style='visibility: hidden'>\
-                    <input type='radio' name='"+questsPractIdent[i].idn_id+"'  value='------' checked>\
+                    <div class='col' id='skipped' style='visibility:hidden'>\
+                    <input type='radio' name='"+questsPractIdent[i].idn_id+"'>\
                     </div>\
                     <div class='w-100'></div>\
             </div>\
@@ -32,15 +32,20 @@ $('#identPractQuespap').append("\
         <div class='col-sm-10'>\
         <a id='quitBtn' class='btn btn-danger quitAndSubmitBtn' onclick='quitAndSubmit(event)'>Quit Exam</a>\
         <a class='btn btn-info' id='nxtBtn' onclick='displayNext()'>Next</a>\
-        <button id='practiceDictResult_Btn' type='submit' class='btn btn-primary quitAndSubmitBtn' onclick='quitAndSubmit(event)' style='display:none'>Submit Answer</button>\
+        <button id='practiceDictResult_Btn' type='submit' class='btn btn-primary quitAndSubmitBtn second' onclick='quitAndSubmit(event)' style='display:none'>Submit Answer</button>\
         <a id='detailReport_Btn' class='btn btn-warning' onclick='openReportCard();' style='display:none'>Detail Report</a>\
         </div>\
     </div>\
       "); 
+     
+  
+
+        
+
       function timeOut() {
         cdreset(questsPractIdent.timeLimit);//timer reset
         countdown();//timer start 
-        displayNext()
+        displayNext();
     }
     var timer = setInterval(timeOut, secondToMilli(questsPractIdent.timeLimit));
  // console.log(questsPractDict.timeLimit);
@@ -48,14 +53,49 @@ $('#identPractQuespap').append("\
              clearInterval(timer);
              cdreset(questsPractIdent.timeLimit);//timer reset
              countdown();//timer start 
+            flag =0;
     timer = setInterval(timeOut, secondToMilli(questsPractIdent.timeLimit));
+    // if($('.questsIndDiv:visible:last input').val() != '' && $('.questsIndDiv:visible:last input').val() != '------'){
+        
+    //     console.log($('.questsIndDiv:visible input').val());
+    //     $('.questsIndDiv:visible:last input').attr('checked','checked').val('------');
+    // }
+    //console.log($('.questsIndDiv:visible input').attr('name'));
 
-    if($('.questsIndDiv:visible:last input').val() == ''){
-        $('.questsIndDiv:visible:last input').val('------');
-        //$('.questsIndDiv:visible:last input').val('');
-     }  
+      
+         
+          
+         
+         // cdpause();
+
+        
+          // setTimeout(function() {
+          //  console.log(questsPractIdent.timeLimit);
+      
+          //   },questsPractIdent.timeLimit)
+
+
+
+    var selName = $('.questsIndDiv:visible input').attr('name');
+    var selectorName= "input[name='"+selName+"']:checked";
+    if (!$(selectorName).val()) {
+        $('.questsIndDiv:visible:last input').attr('checked','checked').val('------');
+    }
+    // if($('.questsIndDiv:visible:last input').val() == ''){
+    //     $('.questsIndDiv:visible:last input').val('------');
+    //     //$('.questsIndDiv:visible:last input').val('');
+    //  }  
+   
       $('.questsIndDiv:visible:last').next().css("display", "block");
-      $('.questsIndDiv:visible:last').prev().hide();
+        $('.questsIndDiv:visible:last').prev().hide();
+       
+
+
+    //});
+    // $('#quitBtn').click(function(){
+    //     $('.questsIndDiv:visible:last').show();
+    //     $('.questsIndDiv:visible:last').next().hide();
+    // });
  
      //  if($('.inputDiv:visible:last')){
      //     console.log('hello'); 
@@ -63,46 +103,194 @@ $('#identPractQuespap').append("\
      //     $('#practiceIdntResult_Btn').show();
      // }
     //console.log($('.questsIndDiv'+(questsPractIdent.length-1)+':visible'));
-    var lastDiv = $('.questsIndDiv:last');
+
     //$('.questsIndDiv:visible:last').parent('.toCheck').siblings('.col').prev().hide();
     //console.log( $('.questsIndDiv:visible:last').parent('.toCheck').siblings('.col').prev().hide());
-  console.log(lastDiv);
-     if(lastDiv.is(':visible')){
-  //// test///       
-         //if($('.questsIndDiv'+(questsPractIdent.length-1)+':visible:input:last').val() != ''){
-         //if($('.questsIndDiv'+(questsPractIdent.length-1)+':visible:input:last').val() != ''){
-         // console.log(lastDiv); 
-        //  $('.questsIndDiv:visible:last').prev().hide();
+ // console.log(lastDiv);
+//  cdpause();
+ 
+
+
+var lastDiv = $('.questsIndDiv:last');
+if(lastDiv.is(':visible')){
+    // alert('last visible');
+           $('#practiceDictResult_Btn').show();
+           $('#nxtBtn').hide();
+          
+    
+         
+//clearInterval(timer);
+
+        
+          
+           
+            //  console.log( delay(time));
+            //  $('.questsIndDiv:last').show().delay(time);
+            // $('#practiceDictResult_Btn').delay(time).trigger('click');   //.queue(function() {
+                // var time =secondToMilli(questsPractIdent.timeLimit);
+                //your code to be executed after 1 second
+                // clearInterval(timer);
+                
+                //$(this).trigger('click');
+            // });
+            
+     
+           
+          // $("#practiceDictResult_Btn").delay(time).trigger('click');
+         
+                //console.log(time);
+            // }, time);
+          // if($('.questsIndDiv:visible:last input').attr('checked','checked').val()=='------')
+          // {
+          //     $('.questsIndDiv:visible:last input').attr('checked','checked').val('------');
+          // }
        
-         $('#practiceDictResult_Btn').show();
-         $('#nxtBtn').hide();
-         cdpause();
-        // if($('.questsIndDiv:visible:last').parent('.row').children('.col:last input').val('------')){
-        clearInterval(timer);
-        // }
+          //$('.questsIndDiv:visible:last').show(questsPractIdent.timeLimit);
+     
+        //  timeOut();
+         
+         
+        // console.log(questsPractIdent.timeLimit);
+        // if(jQuery('#practiceDictResult_Btn').click) {
+        //     //do-some-stuff
+        //     var selName = $('.questsIndDiv:visible input').attr('name');
+        //     var selectorName= "input[name='"+selName+"']:checked";
+            
+        //     if (!$(selectorName).val()) {
+        //          alert();
+        //         $('.questsIndDiv:visible input').attr('checked','checked').val('------');
+        //     }
+        // } else {
+            //run function2 var flag = 0;
+
+            // var selName = $('.questsIndDiv:visible input').attr('name');
+            // var selectorName= "input[name='"+selName+"']:checked";
+            
+            // if (!$(selectorName).val()) {
+            //     //  alert();
+            //     $('.questsIndDiv:visible input').attr('checked','checked').val('------');
+            // }
+           
+            ////////// jshjkahjh//////////////////////////////
+           
+            
+                Lstime = secondToMilli(questsPractIdent.timeLimit);
+                clearTimeout(timeoutHandle);
+                var timeoutHandle = setTimeout(function() {
+                    var selName = $('.questsIndDiv:visible input').attr('name');
+                    var selectorName= "input[name='"+selName+"']:checked";
+                    if (!$(selectorName).val()) {
+                        //  alert();
+                        $('.questsIndDiv:visible input').attr('checked','checked').val('------');
+                    }
+                    clearTimeout(timeoutHandle);
+                    
+                    $("#practiceDictResult_Btn").trigger('click');
+                    // cdpause();
+                    $('#practiceDictResult_Btn').hide();
+                    console.log(Lstime);
+                    
+                  },Lstime);
+                                      
+                 $("#practiceDictResult_Btn").click(function(){ 
+                   clearTimeout(timeoutHandle);
+                      var selName = $('.questsIndDiv:visible input').attr('name');
+                      var selectorName= "input[name='"+selName+"']:checked";
+                      
+                      if (!$(selectorName).val()) {
+                        //    alert();
+                          $('.questsIndDiv:visible input').attr('checked','checked').val('------');
+                          $("#practiceDictResult_Btn").trigger('click');
+                          $('#practiceDictResult_Btn').hide();
+                         
+                        //   $('#dashboard-view #timeShow #timespan').hide();
+                      } 
+                     
+                      cdpause();
+                 });
+
+              
+               //window.clearTimeout(timeoutHandle);
+               
+
+
+                 clearInterval(timer);
+                 ////////////////////////////////////////////////
+
+        //   clearTimeout(tt);
+          //cdpause();
+          
+    }
+    //clearTimeout(timeoutHandle);
+    ////////////////////////////////////quitBtn session////////////////////////////////////////////////////                 
+    $("#quitBtn").click(function(){ 
+       
+        var selName = $('.questsIndDiv:visible input').attr('name');
+        var selectorName= "input[name='"+selName+"']:checked";
+               
+               if (!$(selectorName).val()) {
+                 //    alert();
+                   $('.questsIndDiv:visible input').attr('checked','checked').val('------');
+                
+                  $("#quitBtn").trigger('click');
+                    //window.clearTimeout(timeoutHandle);
+                    $('#nxtBtn').hide();
+                    
+               } 
+               clearInterval(timer);    
+               cdpause();
+            //    var displayedDiv = $('div.questsIndDiv').filter(':visible');
+            //    console.log(displayedDiv);
+                // var last_visible_element = $('div.questsIndDiv:visible:last');
+                // console.log(last_visible_element);
+                // if(last_visible_element){
+                //     console.log($('.questsIndDiv0').css("display", "block").show());
+                
+                // }
+            
+            
+
+});    
+    
+        //  setTimeout(function() {
+        //     alert("Hello");
+        //    }, questsPractIdent.timeLimit);
+        //   cdpause();
+    //     // if($('.questsIndDiv:visible:last').parent('.row').children('.col:last input').val('------')){
+    //    clearInterval(timer);
+    //     // }
         // console.log($('.questsIndDiv:visible:last').parent('.row').children('.col')); 
          //$('.questsIndDiv:visible:last').prev().show();
          //$('.questsIndDiv:visible:last').find('.col').show();
          // $('#identPractQuespap #skipped').css('visibility','visible');
-     }
-     else{ 
-        $('.questsIndDiv:last').hide();
-         
-     }
+   
+  
+    //  else{ 
+    //     $('.questsIndDiv:last').hide();
+    //setTimeout(function(){window.location.href='form2.html'},questsPractIdent.timeLimit);
+    //  }
     
 
 }
-       
+
+//console.log($('.questsIndDiv0').find('input[type=radio],radio,select').filter(':visible:first input'));
 
 
+
+//console.log($('.questsIndDiv:visible:first input').val('------'));
 function openReportCard(){
-    //alert();
+    //alert(); 
     $('#detailReportModal').modal('show');
 }
-
-    function quitAndSubmit(event){
-       //console.log(event);
+    function quitAndSubmit(event){ 
         event.preventDefault();
+        // $("#quitBtn").click(function(){
+        //     // $("p").hide("slow", function(){
+        //        if($('.questsIndDiv:visible:first input').val('------')){
+        //         alert("The paragraph is now hidden");
+        //         console.log($('.questsIndDiv:visible:first input').val('------'));
+        //        }
+        //     });
         var url = path + "stu/idnResCheck/" + ext_id;
         data = $( "#identPractQuespap input").filter(function () {
             return !!this.value; 
@@ -118,22 +306,31 @@ function openReportCard(){
             complete: function(XMLHttpRequest, textStatus) {
             },
             success: function(rsp, textStatus){
-                console.log(rsp);
+                //console.log(rsp);
+                //console.log($( ".questsIndDiv:first").find('input[type=radio],radio,select').filter(':visible:first input').val()== rsp.data.resultData[key]);
                 if(rsp.status == true){
+                //    if($( ".questsIndDiv0:first").find('input[type=radio],radio,select').filter(':visible:first input').val()== rsp.data.resultData[key]){ 
                    
+                //     if (confirm("You have no answered anything, do you want to redirect it to the home page?")) {
+                //         window.location.href = path+'stu'; 
+                     
+                //    }}
                     $(".ansInput").attr("disabled", true);
                     var i = 0;    var sum =0; var wr =0;  var sk =0;
                     for (var key in rsp.data.resultData) {
                         // console.log(rsp.data.resultData.length);
                         // console.log(rsp);
-
+                    
                         if(rsp.data.resultData[key] == 'TRUE'){
                             sum++;
                             console.log(rsp.data.resultData[key]);
                         //alert('Correct');
                             var ht = "#"+key;
                         //    $(ht).siblings('.toCheck').find('span').html("<i class='fa fa-check'></i>");
+                       // $(ht).parent().siblings('span').html("<i class='fa fa-check' ></i>").prev().hide();
                            $(ht).parent().siblings('span').html("<i class='fa fa-check' ></i>");
+                           
+                           
                           
                           
                             $("#detailReportModal_Body table").append("\<table>\
@@ -144,15 +341,24 @@ function openReportCard(){
                     <tr><td>Final Result:</td></tr>\
                     </table>\
                         ");
+                        $("#detailReportModal_Body table").next().show();
+                        $("#detailReportModal_Body table").prev().hide();
                             i++;
                             
                         }else if(rsp.data.resultData[key] == '------'){
+                            // if($( ".questsIndDiv0").find('input[type=radio],radio,select').filter(':visible:first input')){
+                    
+                            //     if (confirm("You have no answered anything, do you want to redirect it to the home page?")) {
+                            //         window.location.href = path+'stu'; 
+                            //     }
+                            //  }
                             sk++;
                             var ht = "#"+key;
                             // $(ht).siblings('.toCheck').find('span').html("<i class='fa fa-check'></i>");
+                            $(ht).siblings('span').append("<i class='fa fa-ban'></i>").prev().hide();
                             $(ht).parent().siblings('span').html("<i class='fa fa-ban'></i>");
                            // console.log($(ht).parent());
-                            // $(ht).siblings('span').append("<i class='fa fa-ban'></i>");
+                            $(ht).siblings('span').append("<i class='fa fa-ban'></i>").prev().hide();
                             $("#detailReportModal_Body table").html("\<table>\
                     <tr><td>Total No.Of.Questions:</td><td>"+(sum+wr+sk)+"</td></tr>\
                     <tr><td>No.Of.Correct Answer:</td><td>"+sum+"</td></tr>\
@@ -161,6 +367,8 @@ function openReportCard(){
                     <tr><td>Final Result:</td></tr>\
                     </table>\
                 ");
+                $("#detailReportModal_Body table").next().show();
+                $("#detailReportModal_Body table").prev().hide();
                     i++;
                         }else{
                             wr++;
@@ -176,6 +384,8 @@ function openReportCard(){
                     <tr><td>Final Result:</td></tr>\
                     </table>\
                 ");
+                $("#detailReportModal_Body table").next().show();
+                $("#detailReportModal_Body table").prev().hide();
                             i++;
                             
                         }
@@ -198,11 +408,10 @@ function openReportCard(){
                     // for(i = 0; i<rsp.data.length; i++){
                     //     $(".jumblQuesRes").append("<div class='media text-muted pt-3 newsfeeds-div'> <p class='media-body pb-3 mb-0 small lh-225 border-bottom border-gray'> <strong class='d-block text-gray-dark'>"+(i+1)+'.'+rsp.data[i].jum_id+"</p></div>");
                     // }	
-                
                     //window.location.href = path+'stu/index';  
-                }else if(rsp.status === false){
+                }else if(rsp.status == false){
                     if (confirm("You have no answered anything, do you want to redirect it to the home page?")) {
-                        window.location.href = path+'stu';
+                        window.location.href = path+'stu'; 
                     }
                 }    
             },
