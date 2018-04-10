@@ -239,7 +239,7 @@ if(lastDiv.is(':visible')){
                    $('.questsIndDiv:visible input').attr('checked','checked').val('------');
                 
                   $("#quitBtn").trigger('click');
-                    //window.clearTimeout(timeoutHandle);
+                    
                     $('#nxtBtn').hide();
                     $('#quitBtn').hide();
                     $('#goHome_Btn').show();

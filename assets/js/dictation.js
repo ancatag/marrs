@@ -156,12 +156,7 @@ $('#dictPractQuespap').append("\
                 window.location.href = path+'stu'; 
             }
         });
-        // $("#qui
-        //   $(".questsIndDiv").fadeOut("normal", function() {
-        //                 // $('.questsIndDiv:visible:last').show();
-        //                 $('.questsIndDiv:visible:last').remove(60000);
-        //                 $('.questsIndDiv:visible:last').next().show();
-        //             });
+     
    
 // for (var i=0; i<questsPractDict.length; i++){
 //     $('#identPractQuespap').append("\
