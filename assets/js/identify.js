@@ -248,6 +248,7 @@ if(lastDiv.is(':visible')){
                } 
                clearInterval(timer);    
                cdpause();
+               jQuery('.questsIndDiv:visible:last').nextAll().replaceWith(jQuery('#identPractQuespap .button_class'));
             //    var displayedDiv = $('div.questsIndDiv').filter(':visible');
             //    console.log(displayedDiv);
                 // var last_visible_element = $('div.questsIndDiv:visible:last');
@@ -276,17 +277,9 @@ if(lastDiv.is(':visible')){
     //setTimeout(function(){window.location.href='form2.html'},questsPractIdent.timeLimit);
     //  }
     
-
-}
-$("#quitBtn").click(function(){ 
-    // if ($(".questsIndDiv:visible:last").length !=0){
     
-        
-       $(".questsIndDiv:visible:last").nextAll().css("visibility", "hidden");
-       $("#identPractQuespap .button_class").css('visibility','visible');
+}
 
-    // }
-    });
 $("#goHome_Btn").click(function(){ 
     
     if (confirm("You have no answered anything, do you want to redirect it to the home page?")) {

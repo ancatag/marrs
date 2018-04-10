@@ -135,7 +135,7 @@ for (var i=0; i<questsPractJumb.length; i++){
                     <p class='media-body pb-3 mb-0 lh-225'> \
                     <strong class='d-block text-gray-dark jumques'>" +(i+1)+ ")" +questsPractJumb[i].jumbled_questions+"</strong></p>\
                 </div>\
-                <div class='col-sm-3'>\
+                <div class='col-sm-4'>\
                     <input type='text' name='"+questsPractJumb[i].jum_id+"' id='"+questsPractJumb[i].jum_id+"'  class='form-control ansInput' placeholder='text answer'>\
                 <span></span>\
                 </div>\
@@ -167,6 +167,7 @@ $('#jumPractQuespap').append("\
       "); 
 
       $('#quitBtn').hide();
+      $('#goHome_Btn').show();
      // for (var i=0; i<questsPractJumb.length; i++){
 function timeOut() {
     cdreset(questsPractJumb.timeLimit);//timer reset
@@ -192,6 +193,7 @@ function displayNext(){
             $('.questsIndDiv:visible:last').next().css("display","block");
             $('.questsIndDiv:visible:last').prev().hide();
             $('#quitBtn').show();
+            $('#goHome_Btn').hide();
  
     
     var lastID =  $('.questsIndDiv:visible:last input').attr('id');
@@ -205,7 +207,7 @@ function displayNext(){
             // var timeoutHandle = setTimeout(function() {
             $('#practiceJumbResult_Btn').show();
             $('#nxtBtn').hide();
-            
+            $('#goHome_Btn').hide();
             clearInterval(timer);
             Lstime = secondToMilli(questsPractJumb.timeLimit);
             var timeoutHandle = setTimeout(function() {
@@ -269,7 +271,7 @@ function displayNext(){
                     $('#goHome_Btn').show();
                     clearInterval(timer);
                     cdpause();
-                   
+                    jQuery('.questsIndDiv:visible:last').nextAll().replaceWith(jQuery('#jumPractQuespap .button_class'));
                    
                     // var check = $('.questsIndDiv input').attr('name');
                     //    console.log(check);
@@ -434,16 +436,7 @@ function openReportCard(){
         });
        
     }
-    $("#quitBtn").click(function(){ 
-        // if ($(".questsIndDiv:visible:last").length !=0){
-         
-        console.log($(".questsIndDiv:visible:last").nextAll());
-            
-           $(".questsIndDiv:visible:last").nextAll().css("visibility", "hidden");
-           $("#jumPractQuespap .button_class").css('visibility','visible');
-           console.log($("#jumPractQuespap .button_class"));
-        // }
-        });
+
 // $(document).ready(createQuestionPaper);
 //  function createQuestionPaper(){
 //     var indQuestsPractJumb = 0;

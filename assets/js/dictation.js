@@ -17,7 +17,7 @@ for (var i=0; i<questsPractDict.length; i++){
               </audio>\
                 </div>\
                 <div class='w-100'></div>\
-                <div class='col'>\
+                <div class='col-sm-4'>\
                 <input type='text' name='"+questsPractDict[i].dic_id+"' id='"+questsPractDict[i].dic_id+"' class='form-control ansInput' placeholder='text answer'/>\
                 <span></span>\
                 </div>\
@@ -48,6 +48,7 @@ $('#dictPractQuespap').append("\
       "); 
       
       $('#quitBtn').hide();
+      $('#goHome_Btn').show();
       function timeOut() {
         cdreset(questsPractDict.timeLimit);//timer reset
         countdown();//timer start
@@ -66,6 +67,7 @@ $('#dictPractQuespap').append("\
              $('.questsIndDiv:visible:last').next().css("display", "block");
              $('.questsIndDiv:visible:last').prev().hide();
              $('#quitBtn').show();
+             $('#goHome_Btn').hide();
             //  $('.questsIndDiv:visible:last').prev().show();
             var lastID =  $('.questsIndDiv:visible:last input').attr('id');
         // console.log($('.questsIndDiv:nth-last-child(2)'));
@@ -128,7 +130,7 @@ $('#dictPractQuespap').append("\
                     $('#goHome_Btn').show();
                     cdpause();
                     clearInterval(timer);
-                   
+                    jQuery('.questsIndDiv:visible:last').nextAll().replaceWith(jQuery('#dictPractQuespap .button_class'));
                  
                 }
         //          $('.questsIndDiv').on('click', '#quitBtn', function(event) {
@@ -265,7 +267,7 @@ function openReportCard(){
                 //     <tr><td>No.Of.Skipped Questions:</td><td>"+sk+"</td></tr>\
                 //     <tr><td>Final Result:</td></tr>\
                 //    ");
-                    $("#detailReportModal_Body #totalMarksObt").val(rsp.data.jumbTotalMark);
+                    $("#detailReportModal_Body #totalMarksObt").val(rsp.data.dictTotalMark);
                     $("#detailReportModal_Body table").addClass('table-striped');
                     $('#detailReport_Btn').show();
                     $('#detailReportModal').modal('show');
@@ -288,13 +290,4 @@ function openReportCard(){
             }
         });
     }
-    $("#quitBtn").click(function(){ 
-        // if ($(".questsIndDiv:visible:last").length !=0){
-         
-        console.log($(".questsIndDiv:visible:last").nextAll());
-            
-           $(".questsIndDiv:visible:last").nextAll().css("visibility", "hidden");
-           $("#dictPractQuespap .button_class").css('visibility','visible');
-           console.log($("#dictPractQuespap .button_class"));
-        // }
-        });
+ 
