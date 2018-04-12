@@ -28,18 +28,20 @@ for (var i=0; i<questsPractIdent.length; i++){
 }  
 $('.questsIndDiv0').css("display", "block");
 $('#identPractQuespap').append("\
+<div class='button_class'>\
     <div class='row'>\
         <div class='col-sm-10'>\
         <a id='quitBtn' class='btn btn-danger quitAndSubmitBtn' onclick='quitAndSubmit(event)'>Quit Exam</a>\
+        <a id='goHome_Btn' class='btn btn-danger quitAndSubmitBtn' style='display:none'>Quit Exam</a>\
         <a class='btn btn-info' id='nxtBtn' onclick='displayNext()'>Next</a>\
         <button id='practiceDictResult_Btn' type='submit' class='btn btn-primary quitAndSubmitBtn second' onclick='quitAndSubmit(event)' style='display:none'>Submit Answer</button>\
         <a id='detailReport_Btn' class='btn btn-warning' onclick='openReportCard();' style='display:none'>Detail Report</a>\
         </div>\
     </div>\
+    </div>\
       "); 
-     
-  
-
+      $('#quitBtn').hide();
+      $('#goHome_Btn').show();
         
 
       function timeOut() {
@@ -88,7 +90,8 @@ $('#identPractQuespap').append("\
    
       $('.questsIndDiv:visible:last').next().css("display", "block");
         $('.questsIndDiv:visible:last').prev().hide();
-       
+        $('#quitBtn').show();
+        $('#goHome_Btn').hide();
 
 
     //});
@@ -188,6 +191,8 @@ if(lastDiv.is(':visible')){
                     $("#practiceDictResult_Btn").trigger('click');
                     // cdpause();
                     $('#practiceDictResult_Btn').hide();
+                    $('#quitBtn').hide();
+                  
                     console.log(Lstime);
                     
                   },Lstime);
@@ -202,7 +207,8 @@ if(lastDiv.is(':visible')){
                           $('.questsIndDiv:visible input').attr('checked','checked').val('------');
                           $("#practiceDictResult_Btn").trigger('click');
                           $('#practiceDictResult_Btn').hide();
-                         
+                          $('#quitBtn').hide();
+                          $('#goHome_Btn').show();
                         //   $('#dashboard-view #timeShow #timespan').hide();
                       } 
                      
@@ -224,7 +230,7 @@ if(lastDiv.is(':visible')){
     //clearTimeout(timeoutHandle);
     ////////////////////////////////////quitBtn session////////////////////////////////////////////////////                 
     $("#quitBtn").click(function(){ 
-       
+        clearTimeout(timeoutHandle);
         var selName = $('.questsIndDiv:visible input').attr('name');
         var selectorName= "input[name='"+selName+"']:checked";
                
@@ -233,25 +239,26 @@ if(lastDiv.is(':visible')){
                    $('.questsIndDiv:visible input').attr('checked','checked').val('------');
                 
                   $("#quitBtn").trigger('click');
-                    //window.clearTimeout(timeoutHandle);
+                    
                     $('#nxtBtn').hide();
+                    $('#quitBtn').hide();
+                    $('#goHome_Btn').show();
+                    $('#practiceDictResult_Btn').hide();
                     
                } 
                clearInterval(timer);    
                cdpause();
+               jQuery('.questsIndDiv:visible:last').nextAll().replaceWith(jQuery('#identPractQuespap .button_class'));
             //    var displayedDiv = $('div.questsIndDiv').filter(':visible');
             //    console.log(displayedDiv);
                 // var last_visible_element = $('div.questsIndDiv:visible:last');
                 // console.log(last_visible_element);
                 // if(last_visible_element){
                 //     console.log($('.questsIndDiv0').css("display", "block").show());
-                
+               
                 // }
-            
-            
-
 });    
-    
+
         //  setTimeout(function() {
         //     alert("Hello");
         //    }, questsPractIdent.timeLimit);
@@ -270,9 +277,15 @@ if(lastDiv.is(':visible')){
     //setTimeout(function(){window.location.href='form2.html'},questsPractIdent.timeLimit);
     //  }
     
-
+    
 }
 
+$("#goHome_Btn").click(function(){ 
+    
+    if (confirm("You have no answered anything, do you want to redirect it to the home page?")) {
+        window.location.href = path+'stu'; 
+    }
+});
 //console.log($('.questsIndDiv0').find('input[type=radio],radio,select').filter(':visible:first input'));
 
 
