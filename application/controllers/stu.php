@@ -52,12 +52,15 @@ class Stu extends CI_Controller {
 	}
 	public function editStu() {
 		$data = array();
-		$rsp = array();
+		$rsp = array();		
 		$updateStuData = array();
 		$updateStuData = $this->input->post(NULL, TRUE);
 		//$this->input->post(array('agnUsername', 'agnPassword', 'agn_phone', 'agn_city', 'agn_country', 'agn_region'));
 		//log_message('info','post'.$this->input->post('agnUsername'));
+
+		// if ($this->session->userdata('loggedIn') !== FALSE && $this->session->userdata('logType') == 'stu') {
 		$rsp['status'] = $this->data->updateStu($updateStuData);
+		// }else{ $rsp['status'] = FALSE;}
 		if ($rsp['status'] == TRUE){
 			$rsp['msg'] =  "Student Updated";
 			$rsp['statusID'] = 1;
@@ -171,8 +174,10 @@ class Stu extends CI_Controller {
             $rsp['status'] = FALSE;
             $rsp['msg'] =  "No Data Fetched";
             $rsp['statusID'] = 0;
-            $rsp['data'] = NULL;
+			$rsp['data'] = NULL;
+		if ($this->session->userdata('loggedIn') !== FALSE && $this->session->userdata('logType') == 'stu') {
 		$newsListArray = $this->data->getAllNewsDb();
+		}else{ $rsp['status'] = FALSE;}
         if ($newsListArray){
 			$rsp['status'] = TRUE;
             $rsp['msg'] =  "Data Fetched";
