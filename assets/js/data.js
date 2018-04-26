@@ -208,7 +208,7 @@ function GetPracticeQuesType() {
         });
     });
    
-    $('body').ready(GetNewsfeeds);
+    $('#dashboard-view').ready(GetNewsfeeds);
 });
 function GetNewsfeeds() {
     // e.preventDefault();

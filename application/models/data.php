@@ -727,7 +727,26 @@ class Data extends CI_Model
     } 
    
     }
-    
+    // Customer Table ------------------------------
+    function create_Customer ($cust, $stu_id) {
+    $data = array(
+        'cust_rp_id' => $cust['cust_rp_id'],
+        'stu_id' => $stu_id,
+        'cust_name' => $cust['name'],
+        'cust_email' => $cust['email'],
+        'cust_sub_id' => '',
+        'cust_plan_id' => $cust['plan_id']
+    );
+    $this->db->insert('sb_sub_cust', $data);
+    }
+    // Updating Customer Table with Sub_id------------------------------
+    function update_sub_Customer ($cust) {
+    $data = array(
+            'cust_sub_id' => $cust['sub_id']
+        );
+    $this->db->where('cust_rp_id', $cust['cust_rp_id']);
+    $this->db->update('sb_sub_cust', $data); 
+    }    
     
     
 }
